@@ -2,3 +2,4 @@ name: Flex
 markdown: redcarpet
 pygments: true
 permalink: /:title
+include: [_pages]
