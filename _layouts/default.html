@@ -24,14 +24,14 @@
       <div class="sidebar" id="sidebar">
         <div class="header">
           <h1 class="title"><a href="/"><img id="logo" src="/images/logo.png"></a></h1>
-          <span class="tagline">A responsive Jekyll theme</span>
+          <span class="tagline">Remco Tukker</span>
         </div>
         <div class="posts">
           <ul class="posts-list">
             {% for post in site.posts %}
               <li class="post-link">
                 <a class="post-title" href="{{ post.url }}">
-                  <span class="post-date">{{ post.date | date_to_string }}</span>
+                  <!-- <span class="post-date">{{ post.date | date_to_string }}</span> --> 
                   {{ post.title }}
                 </a>
               </li>
@@ -40,6 +40,7 @@
         </div>
         <div class="footer">
           <span id="footer-links">
+            <!-- todo this should be at bottom of page and say something like page hosted by Github, Jekyll theme by Jeff-->
             <a href="" class="footer-link">About</a> <span class="separator">&bull;</span>
             <a href="" class="footer-link">Twitter</a> <span class="separator">&bull;</span>
             <a href="" class="footer-link">GitHub</a>
