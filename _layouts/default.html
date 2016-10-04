@@ -28,10 +28,11 @@
         </div>
         <div class="posts">
           <ul class="posts-list">
-            {% for post in site.mypages %}
+            {% assign items = site.mypages | sort: 'path' %}
+            {% for item in items %}
               <li class="post-link">
-                <a class="post-title" href="{{ post.url }}">
-                  {{ post.title }}
+                <a class="post-title" href="{{ item.url }}">
+                  {{ item.title }}
                 </a>
               </li>
             {% endfor %}
