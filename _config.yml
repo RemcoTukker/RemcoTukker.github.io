@@ -1,11 +1,7 @@
 name: Flex
-#markdown: redcarpet
-#pygments: true
 markdown: kramdown
 highlighter: rouge
-#permalink: /:title
-#permalink: pretty #pretty is also not good.. looks like i have to use a collection for my pages
 collections:
- pages:
+ mypages:
    output: true
-   permalink: /:name/
+   permalink: /:title/

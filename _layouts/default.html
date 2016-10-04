@@ -37,7 +37,6 @@
               </li>
             {% endfor %}
             {% for post in site.pages %}
-              <li class="post-link"> {{ post.title }} </li>
               <!-- {% if post.path contains '_pages/' %}  todo fix this hack properly, prolly by using slice? .. -->
               <li class="post-link">
                 <a class="post-title" href="{{ post.url }}">
