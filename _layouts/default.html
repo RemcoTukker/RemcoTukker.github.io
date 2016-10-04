@@ -38,14 +38,14 @@
             {% endfor %}
             {% for post in site.pages %}
               <li class="post-link"> {{ post.title }} </li>
-              <!--{% if post.path contains '_pages/' %}  todo fix this hack properly, prolly by using slice? ..
+              <!-- {% if post.path contains '_pages/' %}  todo fix this hack properly, prolly by using slice? .. -->
               <li class="post-link">
                 <a class="post-title" href="{{ post.url }}">
-                  <span class="post-date">{{ post.date | date_to_string }}</span>
+                  <!-- <span class="post-date">{{ post.date | date_to_string }}</span> -->
                   {{ post.title }}
                 </a>
               </li>
-              {% endif %} -->
+              <!-- {% endif %} -->
             {% endfor %}
           </ul>
         </div>
