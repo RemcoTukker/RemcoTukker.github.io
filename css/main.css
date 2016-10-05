@@ -153,7 +153,6 @@ a:hover {
 
 .post h2 {
   margin-top: 1.25em;
-  margin-left: -0.5em;
   margin-bottom: 1.25em;
 }
 
@@ -177,7 +176,7 @@ a:hover {
   font-family: 'Source Sans Pro', Arial, sans-serif;
   font-size: 17px;
   margin-bottom: 1.45em;
-  text-align: justify;
+  text-align: left;
 }
 
 .post ul, .post ol {
