@@ -28,7 +28,7 @@
         </div>
         <div class="posts">
           <ul class="posts-list">
-            {% assign items = site.mypages | sort: 'path' %}
+            {% assign items = site.mypages | sort: 'order' %}
             {% for item in items %}
               <li class="post-link">
                 <a class="post-title" href="{{ item.url }}">
