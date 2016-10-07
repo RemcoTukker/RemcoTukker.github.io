@@ -14,7 +14,7 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
   * Development of new features for COMETS, which is a small C# WPF software package for use by non-profits giving healthcare in Africa. It is mainly used for patient administration.
   * Maintenance and administration of the Continuous Integration platform that is used by the whole software development department of Ortec. This is currently a homebrew Python system, but I will replace it by a Jenkins (Java) solution.
 * Software Developer / Researcher at [Almende](http://www.almende.org) and [DoBots](http://www.dobots.nl) (2012 - 2014)
-  * Lead development on the Almende part of the European FP7 project ARUM, which included developing JBoss ESB services, a NodeJS agent system and front-end JS development, as well as coordination with the other ARUM partners.
+  * Lead development on the Almende part of the European FP7 project ARUM, which included developing JBoss ESB services, a NodeJS agent system and front-end JS development, as well as coordination with the other ARUM partners. This project was focused on Operations Research topics.
   * Business and technical development for the robotics startup DoBots, which is an Almende spin-off. This involved identifying business opportunities and creating prototypes, often including Android (Java) development and embedded software in C and C++.
 
 ## Formal Education
@@ -43,12 +43,12 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
   * Virtualization
   * Linux and Windows system administration
 * In-depth knowledge
-  * Machine learning
-  * Computer vision
-  * Distributed systems
+  * Machine Learning
+  * Computer Vision
+  * Operations Research
 * Languages
-  * Dutch
-  * English
-  * German
-  * French
-  * Russian
+  * Dutch (native)
+  * English (near native)
+  * German (intermediate)
+  * French (intermediate)
+  * Russian (beginner)
