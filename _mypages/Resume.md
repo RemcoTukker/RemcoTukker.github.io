@@ -25,10 +25,10 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
 ## Skills
 
 * Programming 
-  * C# (Linq, WPF, NuGet) 
-  * Java (JBoss, Maven, Tomcat, Jenkins)
+  * C# (Linq, EF, WPF, NuGet) 
+  * Java (JBoss, Jenkins)
   * Python (Django)
-  * Javascript (NodeJS, JQuery, React, Angular)
+  * Javascript (NodeJS, JQuery, Angular)
   * C (embedded)
   * C++ (STL, Boost)
   * Delphi
