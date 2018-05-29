@@ -21,12 +21,12 @@ A lot of tutorials and example material is somewhat out of date and doesn't incl
 
 Note that you should set up your own STUN server for production use, the google server is only for development. STUN is very simple so this shouldn't be an issue.
 
+The complete demo can be pulled from [the repo](https://github.com/RemcoTukker/WebRTC-SCTP-Demo).
+
 ### Client side
 
 ```javascript
-function logError(err) {
-    console.log(err.toString(), err);
-}
+function logError(err) { console.log(err.toString(), err); }
 
 var pcConfig = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]};
 var socket = io.connect();
@@ -38,6 +38,7 @@ Just an error handler that we will use later on, the WebRTC config that just inc
 
 ```javascript
 pc = new RTCPeerConnection(pcConfig);
+
 socket.on('message', function(message) {
   if (message.type === 'answer') {
     pc.setRemoteDescription(new RTCSessionDescription(message), function(){}, logError);
@@ -45,7 +46,9 @@ socket.on('message', function(message) {
     pc.addIceCandidate(message.candidate);
   }
 });
+
 socket.emit('ready');
+
 pc.onicecandidate = function(candidate) {
   if (!candidate.candidate) return;
   socket.emit('message', {
@@ -63,12 +66,9 @@ dc = pc.createDataChannel('test1', { ordered: false, maxRetransmits: 0 });
 dc.onopen = function() {
   dc.onmessage = function(event) {
     var data = event.data;
-    console.log('dc1: received "' + data + '" at ' + Date.now());
+    console.log('webrtc datachannel received "' + data + '" at ' + Date.now());
   };
-  setTimeout(function() { 
-    dc.send('x: 1234, y: 23499.1, somemore: sefgv'); }, 
-    33
-  );
+  setTimeout(function() { dc.send('x: 1234, y: 99.1, more: sefgv'); }, 33);
 };
 ```
 Now we get to our data channel, ensuring that it is indeed unordered. `maxRetransmits` is 0, because if a message didn't arrive, we don't care. All info of which we are not sure yet that it arrived is included in each message that we send, so that information arrives as quickly as possible even when message go missing. When the data channel is open, we may receive messages, which in this case are logged to the console. It's also possible to send messages, in a typical game you would for example send a message each 33 or 60 ms with user input data.
@@ -87,31 +87,27 @@ The only thing left to do is to create an offer to connect and send it to the se
 ### Server side
 
 ```javascript
+function logError(err) { console.log(err.toString(), err); }
+
 var static1 = require('node-static');
 var http = require('http');
 var file = new(static1.Server)();
-var app = http.createServer(function (req, res) {
-  file.serve(req, res);
-}).listen(2013);
+var app = http.createServer(function (req, res) { file.serve(req, res); }).listen(8000);
 
 var io = require('socket.io').listen(app);
 var webrtc = require('wrtc');
 var RTCPeerConnection = webrtc.RTCPeerConnection;
 var RTCSessionDescription = webrtc.RTCSessionDescription;
 
-var configuration = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]}
-var lastSocket; // TODO allow for multiple connections..
+var pcConfig = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]}
+var aSocket; // TODO manage multiple sockets to allow for multiple players..
 var pc;
-
-function logError(err) {
-    console.log(err.toString(), err);
-}
 ```
 Setting up a server that serves the html and js; require socket.io for signalling, and of course wrtc (node-webrtc). The WebRTC config is the same as for the client.
 
 ```javascript
 io.sockets.on('connection', function (socket){
-  lastSocket = socket;
+  aSocket = socket;
   socket.on('ready', createPeerConnection);
   socket.on('message', function (message){
     if (message.type === 'offer') {
@@ -120,7 +116,7 @@ io.sockets.on('connection', function (socket){
       pc.createAnswer().then(
         function (sessionDescription) {
           pc.setLocalDescription(sessionDescription);
-          lastSocket.emit('message', sessionDescription);
+          aSocket.emit('message', sessionDescription);
         },
         logError
       );
@@ -134,10 +130,10 @@ Here we define what to do when the client sends us a signalling message over soc
 
 ```javascript
 function createPeerConnection() {
-  pc = new RTCPeerConnection(configuration);
+  pc = new RTCPeerConnection(pcConfig);
   pc.onicecandidate = function(candidate) {
     if (!candidate.candidate) return;
-    lastSocket.emit('message', {
+    aSocket.emit('message', {
       type: 'candidate',
       label: candidate.sdpMLineIndex,
       id: candidate.sdpMid,
@@ -149,22 +145,14 @@ function createPeerConnection() {
     dc.onopen = function() {
       dc.onmessage = function(event) {
         var data = event.data;
-        console.log('dc: received "' + data + '" at ' + Date.now());
+        console.log('webrtc datachannel received "' + data + '" at ' + Date.now());
       };
     };
-    setTimeout(function() { 
-      dc.send('x:4234, y:-23491.99, somemore: asdfghj'); }, 
-      33
-    );
+    setTimeout(function() { dc.send('x:42, y:-2.99, more: asdfghj'); }, 33);
   };
 }
 ```
 Setting up the peer connection. ICE candidates work exactly the same as on the client. As we don't initiate the datachannel however, we have to wait for the ondatachannel event; once we have the data channel it is the same as on the client again.
-
-## TODO
-
- * Refactor example code a bit for better organization
- * Create example repo 
 
 ## Links
 
