@@ -7,7 +7,7 @@ WebRTC is not new anymore and a lot of web applications and companies already us
 
 ## Peer to peer data transfer
 
-Peer to peer data transfer over WebRTC is already being used by services such as [File Pizza](https://file.pizza/) and [ShareDrop](https://www.sharedrop.io/) to let you transfer files manually. However, the same tech can be used to automatically send data _across platforms and without you having to maintain any code_. This makes it very easy to prototype/build peer-to-peer software, easier than other p2p solutions such as BitTorrent.
+Peer to peer data transfer over WebRTC is already being used by services such as [File Pizza](https://file.pizza/) and [ShareDrop](https://www.sharedrop.io/) to let you transfer files manually. However, the same tech can be used to set up a more permanent p2p network _with customer-proof NAT traversal_. And that without you having to maintain any code. This makes it very easy to build and deploy peer-to-peer software, much easier than other p2p solutions such as BitTorrent.
 
 One application that I would personally like to see (or develop) is a NAS that automatically sends encrypted backups (or photos, etc) to friends.
 
@@ -17,7 +17,7 @@ WebRTC has an interesting monopoly: it's the only (native) way to send data to a
 
 WebRTC is primarily intended for peer-to-peer connections, but nothing is stopping a server from being one of the peers. In fact, it makes things easier, because the server is always reachable, which means STUN and TURN are not really necessary. STUN still has to be configured, but I think TURN can be avoided completely (and otherwise it's just the administrative matter of setting up a TURN server next to you application server). The only downside is that there's quite a bit of fluff to WebRTC that is not necessary for server-to-peer connections and it may get in the way.
 
-A lot of tutorials and example material is somewhat out of date and doesn't include data channels or unordered data streams. In the end, I got a solution based on [node-webrtc](https://github.com/js-platform/node-webrtc) (nodejs) for the server to work. Here's the relevant code samples to get UDP-like data transfer from the browser to the server running; 200 connections should be easily achieved. More is possible, but CPU usage became quite high. For 500+ connections you might need to switch to an implementation that's optimized for large numbers of data channels.
+A lot of tutorials and example material is somewhat out of date and doesn't include data channels or unordered data streams. In the end, I got a simple solution based on [node-webrtc](https://github.com/js-platform/node-webrtc) (nodejs) for the server to work. Here's the relevant code samples to get UDP-like data transfer from the browser to the server running; 200 connections should be easily achieved. More is possible, but CPU usage became quite high. For 500+ connections you might need to switch to an implementation that's optimized for large numbers of data channels.
 
 Note that you should set up your own STUN server for production use, the google server is only for development. STUN is very simple so this shouldn't be an issue.
 
@@ -161,11 +161,10 @@ function createPeerConnection() {
 ```
 Setting up the peer connection. ICE candidates work exactly the same as on the client. As we don't initiate the datachannel however, we have to wait for the ondatachannel event; once we have the data channel it is the same as on the client again.
 
-
 ## TODO
 
- * test example code
- * add more links
+ * Refactor example code a bit for better organization
+ * Create example repo 
 
 ## Links
 
@@ -173,6 +172,9 @@ Setting up the peer connection. ICE candidates work exactly the same as on the c
  * [WebRTC wikipedia](https://en.wikipedia.org/wiki/WebRTC)
  * [SCTP wikipedia](https://en.wikipedia.org/wiki/Stream_Control_Transmission_Protocol)
  * [node-webrtc](https://github.com/js-platform/node-webrtc)
+ * [Emergence Vector](https://www.emergencevector.com/blog) A game that is build using WebRTC. I think the server is not based on NodeJS though.
+ * [WebUDP](https://github.com/seemk/WebUdp) C++ implementation of a WebRTC server for unordered datachannels; maybe this can be used to scale up further.
+ * [WebRTC for client-server web games](http://blog.brkho.com/2017/03/15/dive-into-client-server-web-games-webrtc/) In depth article about unordered data channels for games including instructions on C++ for buildign the server.
 
 ## Links relating to game networking
 
