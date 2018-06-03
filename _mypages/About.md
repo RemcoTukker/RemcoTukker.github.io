@@ -3,8 +3,6 @@ layout: post
 order: 0
 ---
 
-## This Website
-
 Welcome to my personal website! You'll find some tidbits about me, and some code and ideas of which I think at least a couple of people are interested in them.
 
 This website uses the site generator [Jekyll](https://jekyllrb.com/) and is hosted by Github. The source can also be found [there](https://github.com/RemcoTukker/RemcoTukker.github.io), under a MIT license. The design is based on a Jekyll theme that was created by Jeff Martin, [Flex](https://github.com/the-development/flex).

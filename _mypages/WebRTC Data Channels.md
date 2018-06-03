@@ -25,6 +25,7 @@ The complete demo can be pulled from [the repo](https://github.com/RemcoTukker/W
 
 ### Client side
 
+
 ```javascript
 function logError(err) { console.log(err.toString(), err); }
 
@@ -34,6 +35,7 @@ var pc;
 
 name = prompt('Enter your name:');
 ```
+
 Just an error handler that we will use later on, the WebRTC config that just includes a STUN server, and using socket.io for the signalling between the browser and the server while the WebRTC connection is not yet up. `pc` will hold the peer connection. Finally we prompt the user for their name, but we won't use it in this example; it's just convenient to start everything when you press OK.
 
 ```javascript
@@ -59,6 +61,7 @@ pc.onicecandidate = function(candidate) {
   });
 };
 ```
+
 We create a peer connection. The peer connection needs 2 things from the server to set up the WebRTC connection: a session description and ice candidates. We get this info through socket.io messages. Then we send a socket.io message to the server, so that it knows to prepare a peerconnection for us to connect to. Finally we set onicecandidate, so that when we get information on how to connect to this browser (through STUN for example), we send it to the server using socket.io. Because the server prepared a peerconnection for us, it will be able to set this candidate info on its peerconnection immediately.
 
 ```javascript
@@ -71,6 +74,7 @@ dc.onopen = function() {
   setTimeout(function() { dc.send('x: 1234, y: 99.1, more: sefgv'); }, 33);
 };
 ```
+
 Now we get to our data channel, ensuring that it is indeed unordered. `maxRetransmits` is 0, because if a message didn't arrive, we don't care. All info of which we are not sure yet that it arrived is included in each message that we send, so that information arrives as quickly as possible even when message go missing. When the data channel is open, we may receive messages, which in this case are logged to the console. It's also possible to send messages, in a typical game you would for example send a message each 33 or 60 ms with user input data.
 
 ```javascript
@@ -82,9 +86,11 @@ pc.createOffer().then(
   logError
 );
 ```
+
 The only thing left to do is to create an offer to connect and send it to the server. This kicks off the actual negotiation process which will result in the connection. Here the local description is set; the server should reply with the 'answer' message that is handled by `socket.on('message', ..` above which sets the remote description. When there are also ICE candidates available, the connection will be established!
 
 ### Server side
+
 
 ```javascript
 function logError(err) { console.log(err.toString(), err); }
@@ -103,6 +109,7 @@ var pcConfig = {'iceServers': [{'urls': 'stun:stun.l.google.com:19302'}]}
 var aSocket; // TODO manage multiple sockets to allow for multiple players..
 var pc;
 ```
+
 Setting up a server that serves the html and js; require socket.io for signalling, and of course wrtc (node-webrtc). The WebRTC config is the same as for the client.
 
 ```javascript
@@ -126,6 +133,7 @@ io.sockets.on('connection', function (socket){
   });
 });
 ```
+
 Here we define what to do when the client sends us a signalling message over socket.io: the 'ready' message should be first and means we should set up a peer connection. After that we can receive an offer with the session description of the browser. We set it as the remote description and reply to this message with our own session description. ICE candidates that we receive from the browser are added to the peer connection.
 
 ```javascript
@@ -152,6 +160,7 @@ function createPeerConnection() {
   };
 }
 ```
+
 Setting up the peer connection. ICE candidates work exactly the same as on the client. As we don't initiate the datachannel however, we have to wait for the ondatachannel event; once we have the data channel it is the same as on the client again.
 
 ## Links
@@ -162,7 +171,8 @@ Setting up the peer connection. ICE candidates work exactly the same as on the c
  * [node-webrtc](https://github.com/js-platform/node-webrtc)
  * [Emergence Vector](https://www.emergencevector.com/blog) A game that is build using WebRTC. I think the server is not based on NodeJS though.
  * [WebUDP](https://github.com/seemk/WebUdp) C++ implementation of a WebRTC server for unordered datachannels; maybe this can be used to scale up further.
- * [WebRTC for client-server web games](http://blog.brkho.com/2017/03/15/dive-into-client-server-web-games-webrtc/) In depth article about unordered data channels for games including instructions on C++ for buildign the server.
+ * [WebRTC for client-server web games](http://blog.brkho.com/2017/03/15/dive-into-client-server-web-games-webrtc/) In depth article about unordered data channels for games including instructions on C++ for building the server.
+ * [Mesh Commander](http://www.meshcommander.com/webrtc) Another open source webrtc datachannel server.
 
 ## Links relating to game networking
 
