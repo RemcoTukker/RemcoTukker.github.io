@@ -9,7 +9,10 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
 
 ## Employment
 
-* Software Engineer at [Ortec](https://ortec.com/) (since 2015)
+* Freelance Software Developer (since 2017)
+  * Developing a software solution for adminstration of real estate at ICTU for a government organization. This consisted of an AutoCAD plugin in C# (and some VB.NET and Lisp), various Python/Django webservices, Python scripts for migrating data, interfacing with an WSO2 ESB, visualization of CAD data in the browser using Three.JS, interfacing with ArcGIS for managing GIS data, etc. More importantly, as a Sr Developer on the team my responsibilites also included discussing the solution with the customers architects, helping the product owners decide on functionality, supporting the installation process and maintaining a high software quality throughout the project.
+  * Small maintenance tasks for various companies using tech like NodeJS, Java, C#, etc.
+* Software Engineer at [Ortec](https://ortec.com/) (2015 - 2017)
   * Maintenance and development of new features for Ortec's flagship product, Routing and Dispatch. This is a very large Delphi and C# codebase, with occasionally some C, C++ or Python. Of course, this also involves quite some work with SQL (MS SQLServer).
   * Development of new features for COMETS, which is a small C# WPF software package for use by non-profits giving healthcare in Africa. It is mainly used for patient administration.
   * Maintenance and administration of the Continuous Integration platform that is used by the whole software development department of Ortec. This is currently a homebrew Python system, but I will replace it by a Jenkins (Java) solution.
@@ -28,7 +31,7 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
   * C# (Linq, EF, WPF, NuGet) 
   * Java (JBoss, Jenkins)
   * Python (Django)
-  * Javascript (NodeJS, JQuery, Angular)
+  * Javascript (NodeJS, React, Angular)
   * C (embedded)
   * C++ (STL, Boost)
   * Delphi
