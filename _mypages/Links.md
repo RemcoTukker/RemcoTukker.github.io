@@ -73,6 +73,7 @@ A couple of apparently better known commercial scheduling programs for schools t
 * [Oakfoam](http://oakfoam.com/) New Go playing program that uses MC search.
 * [GnuGo](http://www.gnu.org/software/gnugo/gnugo.html) Open source Go playing program. Not particularly strong, but parts of the program can be reused.
 * [Go Text Protocol](http://www.lysator.liu.se/~gunnar/gtp/) A protocol that can be used to talk to Go servers.
+* [A Kids Guide to Playing Go](https://www.playgroundequipment.com/a-kids-guide-to-playing-go/) For getting started!
 
 ## Neuroscience
 
