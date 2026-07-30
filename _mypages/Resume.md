@@ -10,8 +10,9 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
 ## Employment
 
 * Freelance Software Developer (since 2017)
+  * Develepment and support of a large payroll system in the healthcare sector for a government organization. Most of this was C# and SQL, with various interfaces to related software. Also responsible for the Azure DevOps CI/CD pipelines and a migration from on-prem servers to OpenShift/kubernetes in the cloud.
   * Developing a software solution for adminstration of real estate at ICTU for a government organization. This consisted of an AutoCAD plugin in C# (and some VB.NET and Lisp), various Python/Django webservices, Python scripts for migrating data, interfacing with an WSO2 ESB, visualization of CAD data in the browser using Three.JS, interfacing with ArcGIS for managing GIS data, etc. More importantly, as a Sr Developer on the team my responsibilites also included discussing the solution with the customers architects, helping the product owners decide on functionality, supporting the installation process and maintaining a high software quality throughout the project.
-  * Small maintenance tasks for various companies using tech like NodeJS, Java, C#, etc.
+  * Development and maintenance tasks for various companies using tech like NodeJS, Java, Python, C#, Go, Kubernetes, etc.
 * Software Engineer at [Ortec](https://ortec.com/) (2015 - 2017)
   * Maintenance and development of new features for Ortec's flagship product, Routing and Dispatch. This is a very large Delphi and C# codebase, with occasionally some C, C++ or Python. Of course, this also involves quite some work with SQL (MS SQLServer).
   * Development of new features for COMETS, which is a small C# WPF software package for use by non-profits giving healthcare in Africa. It is mainly used for patient administration.
@@ -28,15 +29,11 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
 ## Skills
 
 * Programming 
-  * C# (Linq, EF, WPF, NuGet) 
-  * Java (JBoss, Jenkins)
+  * C# (Linq, EF) 
   * Python (Django)
   * Javascript (NodeJS, React, Angular)
-  * C (embedded)
-  * C++ (STL, Boost)
-  * Delphi
+  * Go
   * SQL
-  * Matlab
 * Software development workflow
   * Source control (Git, SVN, Perforce)
   * Automated testing (TFS, Jenkins, NUnit, Selenium)
@@ -45,13 +42,6 @@ Thanks to my analytical mindset and a good dose of common sense, I can quickly d
   * Requirement analysis
   * Virtualization
   * Linux and Windows system administration
-* In-depth knowledge
-  * Machine Learning
-  * Computer Vision
-  * Operations Research
 * Languages
   * Dutch (native)
   * English (near native)
-  * German (intermediate)
-  * French (intermediate)
-  * Russian (beginner)
